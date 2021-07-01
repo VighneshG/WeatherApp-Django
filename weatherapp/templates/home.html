@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1 style="font-family: Cinzel">Welcome Home Vighnesh!</h1>
+<br />
+{%if api%} {% if api.cod == 200 %} {{api}}
+<br /><br />
+<h2>City: {{api.name}}</h2>
+<h5>Country Code: {{api.sys.country}}</h5>
+<h5>Temperature: {{api.main.temp}}°C</h5>
+
+<div class="icon">
+  <h2>
+    Weather: {{api.weather.0.description}}
+    <img
+      src="http://openweathermap.org/img/wn/{{api.weather.0.icon}}.png"
+      alt="weathericon"
+    />
+  </h2>
+</div>
+{% else %}
+<h1
+  style="
+    color: rgb(238, 153, 153);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 100px;
+  "
+>
+  Error Occured. Please try again
+</h1>
+{% endif %} {%endif%}
+<br /><br />
+{% endblock %}
