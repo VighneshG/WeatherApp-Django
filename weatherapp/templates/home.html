@@ -1,21 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1 style="font-family: Cinzel">Welcome Home Vighnesh!</h1>
+<h1 style="font-family: Cinzel; text-align: center; color: rgb(121, 64, 233)">
+  Welcome Home Vighnesh!
+</h1>
 <br />
-{%if api%} {% if api.cod == 200 %} {{api}}
-<br /><br />
-<h2>City: {{api.name}}</h2>
-<h5>Country Code: {{api.sys.country}}</h5>
-<h5>Temperature: {{api.main.temp}}°C</h5>
+<div class="icon" style="text-align: center; font-family: cinzel">
+  {%if api%} {% if api.cod == 200 %}
+  <img
+    src="http://openweathermap.org/img/wn/{{api.weather.0.icon}}.png"
+    alt="weathericon"
+  />
+  <h1>{{api.name}}</h1>
+  <h1>{{api.weather.0.description}}</h1>
 
-<div class="icon">
-  <h2>
-    Weather: {{api.weather.0.description}}
-    <img
-      src="http://openweathermap.org/img/wn/{{api.weather.0.icon}}.png"
-      alt="weathericon"
-    />
-  </h2>
+  <h5>Country Code: {{api.sys.country}}</h5>
+  <h5>Temperature: {{api.main.temp}}°C</h5>
 </div>
 {% else %}
 <h1
