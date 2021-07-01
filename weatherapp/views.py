@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 from requests.api import post
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -18,17 +19,7 @@ def home(request):
 
         return render(request, 'home.html', {'api': api})
     else:
-        city = "mumbai"
-        api_request = requests.get(
-            f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid=9e1e111f0076dcac28fe3a3149a5e5b6&units=metric")
-
-        try:
-            api = json.loads(api_request.content)
-
-        except Exception as e:
-            api = "Error...!"
-
-        return render(request, 'home.html', {'api': api})
+        return render(request, 'default.html')
 
 
 def icon(request):
